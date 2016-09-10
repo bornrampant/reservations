@@ -6,28 +6,28 @@ var path = require('path');
 
 var app = express();
 var PORT = 3000;
-console.log("you are connected to: " + PORT)
+
 var tables = [
 
 	{
-		routeName: "bill",
-		name: "Bill Smith",
+		name: "bill",
+		email: "Bill.Smith@gmail.com",
 		partyOf: 9,
-		reservationTime: 2000
+		phoneNumber: "407-888-8888"
 	},
 
 	{
-		routeName: "sue",
-		name: "Sue Morgan",
+		name: "sue",
+		email: "sue.miller@gmail.com",
 		partyOf: 2,
-		reservationTime: 1200
+		phoneNumber: 1200
 	},
 
 	{
-		routeName: "nick",
-		name: "Nicky Jamz",
+		name: "nick",
+		email: "nick.johnson@gmail.com",
 		partyOf: 5,
-		reservationTime: 1350
+		phoneNumber: 1350
 	}
 ]
 
@@ -35,7 +35,7 @@ var tables = [
 app.post('/api/new', function(req, res){
 
 	var newTable = req.body;
-	newTable.routeName=newTable.name.replace(/\s+/g,'').toLowerCase()
+	newTable.name=newTable.email.replace(/\s+/g,'').toLowerCase()
 	
 	console.log(newTable);
 	tables.push(newTable)
