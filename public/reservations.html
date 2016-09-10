@@ -56,27 +56,27 @@
  <script type="text/javascript">
 
         // QUESTION: What is this code doing?
-        $(searchBtn).on("click", function() {
+        // $(searchBtn).on("click", function() {
 
-            var searchedCharacter = $("#characterSearch").val().trim();
+        //     var searchedCharacter = $("#characterSearch").val().trim();
 
-            // searchedCharacter = Darth Maul
+        //     // searchedCharacter = Darth Maul
 
-            searchedCharacter = searchedCharacter.replace(/\s+/g, '').toLowerCase();
+        //     searchedCharacter = searchedCharacter.replace(/\s+/g, '').toLowerCase();
 
-            // QUESTION: What does $.get do? What are the parameters it is expecting?
+        //     // QUESTION: What does $.get do? What are the parameters it is expecting?
 
-            // searchedCharacter = darthmaul
+        //     // searchedCharacter = darthmaul
 
-            // http://localhost:3000/api/darthmaul
-            $.get("http://localhost:3000/api/" + searchedCharacter, function(data) {
-
-
+        //     // http://localhost:3000/api/darthmaul
+        //     $.get("http://localhost:3000/api/" + searchedCharacter, function(data) {
 
 
-            });
 
-        });
+
+        //     });
+
+        // });
 
         // QUESTION: What is this code doing?
 
@@ -84,11 +84,10 @@
             var charName = $("#name").val().trim();
 
             var parameters = {
-                characterName: charName,
-                characterRole: $("#role").val().trim(),
-                characterAge: $("#age").val().trim(),
-                characterPoints: $("#force_point").val().trim(),
-                routeName: charName.replace(/\s+/g, '').toLowerCase()
+                Name: charName,
+                PhoneNumber: $("#phoneNumber").val().trim(),
+                Email: $("#email").val().trim(),
+                Guest: $("#guestCount").val().trim()
             };
 
             url = "http://localhost:3000/new?";
