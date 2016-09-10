@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Reservation</title>
+        <!-- Latest compiled and minified CSS & JS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
+    </head>
+    <body>
+<div class="container">
+            <div class="jumbotron">
+                <h1>Restaurant Reservation</h1>
+                <hr>
+
+                <button type="button" id="viewTables" class="btn btn-danger btn-lg">
+                    <span class="glyphicon glyphicon-plus"></span>
+                    View Tables</button>
+                <button type="button" id="home" class="btn btn-danger btn-lg">
+                    <span class="glyphicon glyphicon-plus"></span>
+                    Home</button>                    
+            </div>
+            <div class="row">
+
+                <div class="col-lg-12">
+
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">
+                                <strong>Make Reservation</strong>
+                            </h3>
+                        </div>
+                        <div class="panel-body">
+                            Name: <br>
+                            <input type="text" id="name" class="form-control">
+                            <br>
+                            Phone Number: <br>
+                            <input type="text" id="phoneNumber" class="form-control">
+                            <br>
+                            Email: <br>
+                            <input type="text" id="email" class="form-control">
+                            <br>
+                            Guest Count: <br>
+                            <input type="text" id="guestCount" class="form-control">
+                            <br>                                                                                    
+                            <div class="text-right">
+                                <button type="submit" class="btn btn-primary btn-md" id="addBtn"></span>
+                                
+                                Add Reservation</button>
+                        </div>
+                    </div>
+                </div>
+
+ <script type="text/javascript">
+
+        // QUESTION: What is this code doing?
+        $(searchBtn).on("click", function() {
+
+            var searchedCharacter = $("#characterSearch").val().trim();
+
+            // searchedCharacter = Darth Maul
+
+            searchedCharacter = searchedCharacter.replace(/\s+/g, '').toLowerCase();
+
+            // QUESTION: What does $.get do? What are the parameters it is expecting?
+
+            // searchedCharacter = darthmaul
+
+            // http://localhost:3000/api/darthmaul
+            $.get("http://localhost:3000/api/" + searchedCharacter, function(data) {
+
+
+
+
+            });
+
+        });
+
+        // QUESTION: What is this code doing?
+
+        $('#addBtn').on("click", function() {
+            var charName = $("#name").val().trim();
+
+            var parameters = {
+                characterName: charName,
+                characterRole: $("#role").val().trim(),
+                characterAge: $("#age").val().trim(),
+                characterPoints: $("#force_point").val().trim(),
+                routeName: charName.replace(/\s+/g, '').toLowerCase()
+            };
+
+            url = "http://localhost:3000/new?";
+
+            console.log(url + $.param(parameters));
+
+            // QUESTION: What does $.get do? What are the parameters it is expecting?
+            $.get(url + $.param(parameters), function(data) {
+
+                console.log(data);
+                if (data == false) {
+                    $("#name").text("The force is not strong with this one. Your character was not found. ");
+                    $("#stats").hide();
+                } else {
+                    $("#stats").show();
+                    $("#name").text(data.name);
+                    $("#role").text(data.role);
+                    $("#age").text(data.age);
+                    $("#forcePoints").text(data.forcePoints);
+                }
+
+            });
+
+        });
+    </script>                
+
+
+
+
+
+
+</body>
+</html>
